@@ -274,10 +274,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -322.0
-margin_top = -223.0
-margin_right = 323.0
-margin_bottom = 224.0
+margin_left = -403.0
+margin_top = -226.0
+margin_right = 242.0
+margin_bottom = 221.0
 resizable = true
 script = SubResource( 10 )
 __meta__ = {
@@ -289,6 +289,13 @@ anchor_right = 1.0
 margin_right = 0.0
 closed_button_string = "Menu"
 opened_button_string = "Menu"
+
+[node name="QuakeStyleWindow_Console2" parent="." instance=ExtResource( 3 )]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 0.0
+expand_direction = 0
 [connection signal="pressed" from="Content/Button" to="Content/Button" method="_on_Button_pressed"]
 [connection signal="pressed" from="Content/Button2" to="Content/Button2" method="_on_Button2_pressed"]
 [connection signal="pressed" from="QuakeStyleWindow_Console/Content/QuakeStyleWindow_Buttons/Content/Button" to="WindowDialog" method="_on_Button_pressed"]
