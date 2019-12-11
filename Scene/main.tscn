@@ -1,0 +1,298 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Fonts/Res/font1-32.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Fonts/Res/font1-16.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Scene/UIToolKit/QuakeStyleWindow_Console.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scene/UIToolKit/QuakeStyleWindow_Buttons.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scene/UIToolKit/QuakeStyleWindow_Menu.tscn" type="PackedScene" id=5]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.156863, 0.156863, 0.156863, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 10
+shadow_color = Color( 0, 0, 0, 0.54902 )
+shadow_size = 2
+shadow_offset = Vector2( 0, 2 )
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Label
+
+func _ready():
+	text = get_tree().current_scene.name
+"
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+shadow_size = 2
+shadow_offset = Vector2( 0, 2 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.278431, 0.278431, 0.278431, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.0745098, 0.0745098, 0.0745098, 1 )
+border_blend = true
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 5
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.160784, 0.160784, 0.160784, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.0745098, 0.0745098, 0.0745098, 1 )
+border_blend = true
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 5
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.0745098, 0.0745098, 0.0745098, 1 )
+border_blend = true
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 5
+shadow_size = 1
+
+[sub_resource type="GDScript" id=8]
+script/source = "extends Button
+
+func _on_Button_pressed():
+	Global.sign_in()
+"
+
+[sub_resource type="GDScript" id=9]
+script/source = "extends Button
+
+func _on_Button2_pressed():
+	Global.submit_score()
+"
+
+[sub_resource type="GDScript" id=10]
+script/source = "extends WindowDialog
+
+func _on_Button_pressed():
+	visible = !visible
+	pass # Replace with function body.
+"
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Window" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Panel" parent="."]
+anchor_right = 1.0
+margin_left = 350.0
+margin_right = -350.0
+margin_bottom = 41.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Title"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -459.0
+margin_top = -19.5
+margin_right = 459.0
+margin_bottom = 19.5
+custom_fonts/font = ExtResource( 1 )
+text = "SCENE_NAME"
+align = 1
+valign = 1
+script = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Content" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -120.0
+margin_top = -194.0
+margin_right = 120.0
+margin_bottom = 195.0
+custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Content"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -69.9999
+margin_top = 43.0
+margin_right = 69.9999
+margin_bottom = 91.0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Login"
+script = SubResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="Content"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -69.9999
+margin_top = -87.0
+margin_right = 69.9999
+margin_bottom = -39.0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Submit Score"
+script = SubResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button3" type="Button" parent="Content"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -70.0
+margin_top = -24.0
+margin_right = 70.0
+margin_bottom = 24.0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Logout"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button4" type="Button" parent="Content"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -70.0
+margin_top = -88.0
+margin_right = 70.0
+margin_bottom = -40.0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Logout"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button5" type="Button" parent="Content"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -70.0
+margin_top = 41.0
+margin_right = 70.0
+margin_bottom = 89.0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Logout"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuakeStyleWindow_Console" parent="." instance=ExtResource( 3 )]
+anchor_right = 1.0
+margin_right = 0.0
+
+[node name="QuakeStyleWindow_Buttons" parent="QuakeStyleWindow_Console/Content" index="2" instance=ExtResource( 4 )]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -147.5
+margin_right = 147.5
+margin_bottom = 0.0
+height_window = 180
+is_closed = false
+
+[node name="WindowDialog" type="WindowDialog" parent="."]
+visible = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -322.0
+margin_top = -223.0
+margin_right = 323.0
+margin_bottom = 224.0
+resizable = true
+script = SubResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuakeStyleWindow_Menu" parent="WindowDialog" instance=ExtResource( 5 )]
+anchor_right = 1.0
+margin_right = 0.0
+closed_button_string = "Menu"
+opened_button_string = "Menu"
+[connection signal="pressed" from="Content/Button" to="Content/Button" method="_on_Button_pressed"]
+[connection signal="pressed" from="Content/Button2" to="Content/Button2" method="_on_Button2_pressed"]
+[connection signal="pressed" from="QuakeStyleWindow_Console/Content/QuakeStyleWindow_Buttons/Content/Button" to="WindowDialog" method="_on_Button_pressed"]
+
+[editable path="QuakeStyleWindow_Console"]
+
+[editable path="QuakeStyleWindow_Console/Content/QuakeStyleWindow_Buttons"]
