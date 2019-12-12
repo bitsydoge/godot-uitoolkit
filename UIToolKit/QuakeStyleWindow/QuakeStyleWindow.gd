@@ -1,7 +1,6 @@
 extends Panel
 
 onready var tween = $Tween
-onready var button = $HideShow
 
 signal open_start
 signal close_start
@@ -49,28 +48,17 @@ func _ready():
 		start_size_y = rect_size.y
 		end_size_y = rect_size.y + height_open
 
-	if is_closed:
-		rect_size.y = 0
-		if(closed_button_string != ""):
-			button.text = closed_button_string
-	else:
+	if !is_closed:
 		tween_start()
 		tween.seek(open_speed)
-		if(opened_button_string != ""):
-			button.text = opened_button_string
 
 func tween_start():
 	if switch:
 		if expand_direction == Direction.TOP:
-			button.anchor_top = 0
-			button.anchor_bottom = 0
 			tween.interpolate_property(self, "rect_position:y",
 			rect_position.y, end_position_y, open_speed,
 			open_transition_type, open_ease_type)
-			
-		else:
-			button.anchor_top = 1
-			button.anchor_bottom = 1
+
 					
 		tween.interpolate_property(self, "rect_size:y",
 		rect_size.y, end_size_y, open_speed,
@@ -95,20 +83,20 @@ func toggle():
 	if switch:
 		emit_signal("open_start")
 		tween_start()
-		if(opened_button_string != ""):
-			button.text = opened_button_string
 	else:
 		emit_signal("close_start")
 		tween_start()
-		if(closed_button_string != ""):
-			button.text = closed_button_string
 
 func _on_HideShow_pressed():
 	toggle()
-
 
 func _on_Tween_tween_completed(object, key):
 	if switch:
 		emit_signal("close_finish")
 	else:
 		emit_signal("open_finish")
+
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT and event.pressed:
+			print("Clicked On Object")
