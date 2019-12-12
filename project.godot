@@ -16,12 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="UIToolKit"
-run/main_scene="res://Scene/main.tscn"
+run/main_scene="res://Demo/main.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-Global="*res://Script/Global.gd"
+Global="*res://Global.gd"
 
 [display]
 
